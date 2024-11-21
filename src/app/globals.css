@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Improved base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+/* Enhanced component styles */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold
+           hover:bg-blue-700 transition-all duration-300 shadow-lg
+           hover:shadow-xl hover:-translate-y-0.5;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold
+           hover:bg-gray-50 transition-all duration-300 shadow-lg
+           hover:shadow-xl hover:-translate-y-0.5 border border-blue-100;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl
+           transition-all duration-300 overflow-hidden;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-width {
+    @apply max-w-7xl mx-auto;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-shadow {
+    text-shadow: var(--text-shadow);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r 
+           from-blue-600 to-blue-800;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/10 border border-white/20;
+  }
+}
+
+/* Improved scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-blue-600 rounded-full hover:bg-blue-700;
+}
+
+/* Loading performance optimization */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-on-scroll {
+    view-timeline-name: --reveal;
+    view-timeline-axis: block;
+    animation-timeline: --reveal;
+    animation-range: entry 25% cover 50%;
+  }
+}
